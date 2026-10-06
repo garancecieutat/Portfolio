@@ -145,17 +145,6 @@ h1, h2, h3 {
   padding: 0 20px;
 }
 
-.hero-banner {
-  height: 60vh;
-  background: linear-gradient(135deg, var(--primary-pink), var(--accent-purple));
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  padding-left: 50px;
-  margin-top: 85px;
-}
-
 .container-portfolio {
   max-width: 1300px;
   margin: 40px auto;
@@ -514,9 +503,7 @@ footer {
   /* Contenu et marges */
   .hero-banner {
     margin-top: 100px; 
-    padding-left: 20px;
     justify-content: center;
-    text-align: center;
   }
   
   .page-content {

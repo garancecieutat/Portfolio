@@ -126,5 +126,57 @@
   </div>
 
   <script src="script.js"></script>
+
+  <script>
+  window.addEventListener('load', function() {
+      const urlSignature = 'img/signature.png'; 
+      
+      const signatureImg = new Image();
+      signatureImg.src = urlSignature;
+
+      signatureImg.onload = function() {
+          const artworks = document.querySelectorAll('.masonry-item img');
+
+          artworks.forEach(function(img) {
+              const canvas = document.createElement('canvas');
+              const ctx = canvas.getContext('2d');
+
+              if(img.complete) {
+                  fusionnerImage(img, signatureImg, canvas, ctx);
+              } else {
+                  img.onload = function() {
+                      fusionnerImage(img, signatureImg, canvas, ctx);
+                  }
+              }
+              
+              img.oncontextmenu = function() { return false; };
+          });
+      };
+
+      function fusionnerImage(img, signatureImg, canvas, ctx) {
+          canvas.width = img.naturalWidth;
+          canvas.height = img.naturalHeight;
+
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+          // 2. On calcule la taille et la position de la signature (ex: en bas à droite)
+          // La signature fera 15% de la largeur de l'image (tu peux changer ce chiffre)
+          const sigWidth = canvas.width * 0.15; 
+          const ratio = signatureImg.naturalHeight / signatureImg.naturalWidth;
+          const sigHeight = sigWidth * ratio;
+
+          // Marge par rapport aux bords (ex: 30 pixels)
+          const margin = 30; 
+          const x = canvas.width - sigWidth - margin;
+          const y = canvas.height - sigHeight - margin;
+
+          // 3. On dessine la signature par-dessus
+          ctx.drawImage(signatureImg, x, y, sigWidth, sigHeight);
+
+          // 4. On remplace la source de l'image originale par notre image fusionnée
+          img.src = canvas.toDataURL('image/jpeg', 0.9);
+        }
+    });
+  </script>
 </body>
 </html>

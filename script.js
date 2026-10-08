@@ -150,3 +150,73 @@ if (masonryItems.length > 0 && lightbox) {
     }
   });
 }
+
+window.addEventListener('load', function() {
+    const urlSignature = 'img/signature.png'; // Ton image de signature
+    
+    const signatureImg = new Image();
+    signatureImg.src = urlSignature;
+
+    signatureImg.onload = function() {
+        
+        // 1. Appliquer la signature sur la grille de dessins
+        const artworks = document.querySelectorAll('.masonry-item img');
+        artworks.forEach(function(img) {
+            // Bloquer le clic droit sur la miniature
+            img.oncontextmenu = function() { return false; };
+
+            if(img.complete) {
+                fusionnerImage(img);
+            } else {
+                img.addEventListener('load', function() {
+                    fusionnerImage(img);
+                });
+            }
+        });
+
+        // 2. Appliquer la signature dans la Lightbox (quand on clique)
+        const lightboxImg = document.getElementById('lightbox-img');
+        if (lightboxImg) {
+            // Bloquer le clic droit dans la lightbox
+            lightboxImg.oncontextmenu = function() { return false; };
+
+            // Dès que la lightbox charge une image, on lui met la signature
+            lightboxImg.addEventListener('load', function() {
+                fusionnerImage(lightboxImg);
+            });
+        }
+    };
+
+    function fusionnerImage(img) {
+        // Évite une boucle infinie si l'image a déjà été modifiée
+        if (img.src.startsWith('data:image')) {
+            return;
+        }
+
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+
+        if(canvas.width === 0 || canvas.height === 0) return;
+
+        // On dessine l'image originale
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        // On calcule la taille et la position de la signature
+        const sigWidth = canvas.width * 0.15; 
+        const ratio = signatureImg.naturalHeight / signatureImg.naturalWidth;
+        const sigHeight = sigWidth * ratio;
+
+        const margin = 30; 
+        const x = canvas.width - sigWidth - margin;
+        const y = canvas.height - sigHeight - margin;
+
+        // On ajoute la signature
+        ctx.drawImage(signatureImg, x, y, sigWidth, sigHeight);
+
+        // On remplace la source de l'image par le résultat
+        img.src = canvas.toDataURL('image/jpeg', 0.9);
+    }
+});

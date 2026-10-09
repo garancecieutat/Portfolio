@@ -141,7 +141,10 @@ h1, h2, h3 {
 /* Structure générale */
 .container {
   max-width: 1100px;
-  margin: 40px auto;
+  margin-top: 100px; 
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 0 20px;
 }
 
@@ -470,12 +473,6 @@ footer {
     align-items: center;
     padding: 10px;
     gap: 10px;
-  }
-
-  .nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 15px;
   }
 
   .logo-circle {

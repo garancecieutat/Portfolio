@@ -19,31 +19,55 @@
       <ul class="nav-links">
         <li><a href="index.html">À propos</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="cv-contact.html">CV & Contact</a></li>
+        <li><a href="cv-contact.html" class="active">CV & Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main class="container page-content">
-    <section class="cv-download">
-      <h1>Mon Parcours</h1>
-      <p style="margin-bottom:20px;">Vous pouvez télécharger mon CV complet au format PDF ci-dessous :</p>
-      <a href="CV_ClaraSucilea.pdf" class="btn-download" download>Télécharger mon CV</a>
+    
+    <!-- En-tête centré style Portfolio -->
+    <section class="intro-box">
+      <h1>Mon contact</h1>
     </section>
 
-    <section class="resume-section">
-      <h2>Contact</h2>
+    <section class="resume-section contact-card">
+      <h2>Mes Coordonnees</h2>
       <p><strong>Email :</strong> <a href="mailto:clara.sucilea@gmail.com" class="contact-link">clara.sucilea@gmail.com</a></p>
       <p><strong>Téléphone :</strong> <a href="tel:+33666007626" class="contact-link">+33 6 66 00 76 26</a></p>      
       <p><strong>Localisation :</strong> Aulnay-sur-mauldre (78)</p>
       <img src="img/logo_cache.png" class="contact-image" alt="">
     </section>
+
+    <div class="cv-contact-grid">
+      <div class="left-column">
+
+        <section class="resume-section cv-section-card">
+          <h2>Mon CV</h2>
+          <p class="cv-description">Retrouvez l'intégralité de mon parcours, mes formations et mes expériences :</p>
+          <a href="CV_ClaraSucilea.pdf" class="btn-download" download>Télécharger mon CV (PDF)</a>
+        </section>
+      </div>
+
+      <div class="right-column">
+        <section class="resume-section cv-preview-card">
+          <h2>Apercu</h2>
+          <div class="cv-preview-box">
+            <a href="CV_ClaraSucilea.pdf" target="_blank" title="Agrandir ou télécharger le CV">
+              <img src="img/cv.png" alt="Aperçu du CV de Clara Sucilea" class="cv-thumbnail">
+            </a>
+          </div>
+        </section>
+      </div>
+
+    </div>
+
   </main>
 
   <footer>
     <p>Suivez-moi sur mes réseaux :</p>
     <div class="social-links">
-      <!--<a href="#"><img src="img/instagram.jpeg" alt="Logo Instagram" width="17px" height="17px"> Instagram</a>-->
+      <!--<a href="#"><img src="img/instagram.jpeg" alt="Logo Instagram" width="17px" height="17px"> Instagram</a>-->      
       <a href="https://www.linkedin.com/in/clara-sucilea-72500a3ab/"><img src="img/linkedin.png" alt="Logo LinkedIn" width="15px" height="15px"> LinkedIn</a>
     </div>
   </footer>

@@ -113,7 +113,7 @@ h1, h2, h3 {
 /* Structure générale */
 .container {
   max-width: 1100px;
-  margin-top: 100px; 
+  margin-top: 110px; 
   margin-bottom: 40px;
   margin-left: auto;
   margin-right: auto;
@@ -508,9 +508,6 @@ footer {
     flex: auto; 
   }
 
-}
-
-@media (max-width: 768px) {
   .navbar {
     flex-direction: column; 
     align-items: center;
@@ -562,10 +559,42 @@ footer {
     column-count: 3;
   }
 
+  .container {
+    max-width: 1100px;
+    margin-top: 130px; 
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+  }
+  
 }
 
 @media (max-width: 500px) {
   .masonry-grid {
     column-count: 2; 
   }
+}
+
+
+
+/*---TEST CV CONTACT---*/
+
+/*Posibilité 2*/
+.cv-grid-centered {
+  align-items: center;
+}
+
+/*Posibilité 3*/
+.cv-single-block {
+  text-align: center;
+}
+
+.cv-single-block .cv-preview-box {
+  max-width: 450px; 
+  margin: 15px auto 25px auto;
+}
+
+.cv-single-block .cv-action {
+  margin-top: 15px;
 }
